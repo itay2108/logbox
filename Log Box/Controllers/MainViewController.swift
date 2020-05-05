@@ -198,7 +198,11 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
             setLogParameters(log: recording)
             print(String(describing: recording))
             realm(write: recording)
-            
+            do {
+                try FileManager.default.removeItem(at: self.currentRecordingURL!)
+            } catch {
+               print("error removing recording from file directory: \(error)")
+            }
         }
         
     }
@@ -211,10 +215,10 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
     }
     
     
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
+//    func getDocumentsDirectory() -> URL {
+//        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+//        return paths[0]
+//    }
     
     
     //MARK: - Permissions

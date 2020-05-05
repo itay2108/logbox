@@ -26,7 +26,6 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
     
     let paths = NSSearchPathForDirectoriesInDomains( .documentDirectory, .userDomainMask, true)
     
-    
     private var realm = try! Realm()
     private let def = UserDefaults.standard
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
@@ -74,7 +73,9 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
             print(safeLog)
             setUI(byLog: safeLog)
             
-            //recognizeFile(url: recordingURL)
+            let recordingURL = prepareRecognitionURL(from: log)
+            
+            recognizeFile(url: recordingURL)
         }
 
         logTitle.delegate = self
@@ -174,11 +175,6 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
     
     //MARK: - Database Methods
     
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    
 
     func realm(getLogWithName name: String) {
         //log = realm.object(ofType: Log.self, forPrimaryKey: name)
@@ -211,6 +207,7 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
             logTitle.textColor = UIColor(named: "silver")
         }
     }
+    
     
     //MARK: - UI Methods
     
@@ -249,12 +246,14 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
         currentRecTime.text = getFormattedTimeFromSeconds(seconds: Int(round(player.currentTime)))
     }
     
-    func recognizeFile(url: URL) {
+    func recognizeFile(url: URL?) {
        guard let myRecognizer = SFSpeechRecognizer() else { print("speech recognition is not available at this locale"); return }
-       
+       guard url != nil else { print("url is nil"); return }
+       print("performing recognition")
+        
        if !myRecognizer.isAvailable { print("speech recognition is not available at this locale"); return }
 
-       let request = SFSpeechURLRecognitionRequest(url: url)
+       let request = SFSpeechURLRecognitionRequest(url: url!)
        myRecognizer.recognitionTask(with: request) { (result, error) in
         
           guard let result = result else { print("recognition failed"); return }
@@ -262,9 +261,24 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
           
           if result.isFinal {
              // Jacob De La Bergoolah says: set result label to final result here
-            self.transcriptLabel.text = String(describing: result.bestTranscription)
+            self.transcriptLabel.text = result.bestTranscription.formattedString
           }
        }
+    }
+    
+    func prepareRecognitionURL(from log: Log?) -> URL? {
+        guard log != nil else { print("found nil when preparing log recording recognition task"); return nil }
+        
+        let recordingURL = getDocumentsDirectory().appendingPathComponent("RecognitionQueue.m4a")
+        print("preparing URL...")
+        do {
+            try log?.recording.write(to: recordingURL)
+        } catch {
+            print("error writing recording data to local URL: \(error)")
+            return nil
+        }
+        
+        return recordingURL
     }
 
 
@@ -312,4 +326,4 @@ extension SavedLogViewController: UITextFieldDelegate {
 // 1. toggle play/pause button image ------------------------------------ DONE
 // 2. when playing after pause - play from stopping point --------------- DONE
 // 3. if name began editing but not changed - return to previous name --- DONE
-// 4. does speech recognition works on first time?
+// 4. does speech recognition work?
