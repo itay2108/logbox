@@ -5,11 +5,23 @@
 //  Created by itay gervash on 07/04/2020.
 //  Copyright © 2020 itay gervash. All rights reserved.
 //
+//To Do:
+//
+// 1. toggle play/pause button image ------------------------------------ DONE
+// 2. when playing after pause - play from stopping point --------------- DONE
+// 3. if name began editing but not changed - return to previous name --- DONE
+// 4. does speech recognition work? ------------------------------------- DONE
+// 5. only preform recognition if not preformed yet --------------------- DONE
+// 6. animate activity indicator when recognizing speech ---------------- DONE
+// 7. forward and backward playback button implementation --------------- DONE
+// 8. try to animate playback tab bar ----------------------------------- DONE
 
 import UIKit
 import RealmSwift
 import AVFoundation
 import Speech
+import Motion
+import Hero
 
 class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
 
@@ -19,6 +31,8 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var transcriptLabel: UITextView!
     @IBOutlet var tabBarButtons: [UIButton]!
     @IBOutlet weak var logTitle: UITextField!
+
+    
     
     @IBOutlet weak var mainTabBar: UIView!
     @IBOutlet var playbackTabBar: UIView!
@@ -29,13 +43,11 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
     private var realm = try! Realm()
     private let def = UserDefaults.standard
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
-    private var fileNameMemory: String?
 
     public var recordingNameToDisplay: String! {
         didSet {
             print("log name to display:", String(describing: recordingNameToDisplay))
             realm(getLogWithName: recordingNameToDisplay!)
-            print("log is:", String(describing: log))
         }
     }
     public var log: Log?
@@ -63,19 +75,24 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
         slider.setThumbImage(UIImage(systemName: "circle.fill"), for: .normal)
         
         clearNavBarSeparator()
-        if let success = createAudioSessionObject() {
-            audioSession = success
+        if let object = createAudioSessionObject() {
+            audioSession = object
         }
         
         slider.isContinuous = false
+        transcriptLabel.text = ""
         
         if let safeLog = log {
             print(safeLog)
             setUI(byLog: safeLog)
             
-            let recordingURL = prepareRecognitionURL(from: log)
+            if safeLog.transcript == nil {
+                let recordingURL = prepareRecognitionURL(from: log)
+                recognizeFile(url: recordingURL)
+            } else {
+                transcriptLabel.text = safeLog.transcript
+            }
             
-            recognizeFile(url: recordingURL)
         }
 
         logTitle.delegate = self
@@ -94,9 +111,14 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
         guard log != nil else { print("log is nil when trying to play recording"); return }
         
         displayPlaybackTabBar(show: true)
-        playM4AAudio(from: log!)
         
+        if playState == .inactive {
+        playM4AAudio(from: log!)
         playState = .active
+        } else if playState == .paused {
+            
+        }
+        
     }
     
     @IBAction func togglePauseOnTabBar(_ sender: UIButton) {
@@ -114,10 +136,45 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
     
+    @IBAction func forwardPlaybackPressed(_ sender: Any) {
+        guard player != nil else { print("player is nil"); return }
+        
+        var timePoint = player.currentTime + 30.0
+        
+        if timePoint > player.duration {
+            timePoint = player.duration
+        }
+
+        print(timePoint)
+        
+        player.currentTime = timePoint
+        
+    }
+    
+    @IBAction func backwardPlaybackPressed(_ sender: Any) {
+        guard player != nil else { print("player is nil"); return }
+        
+        var timePoint = player.currentTime - 30.0
+        
+        if timePoint < 0 {
+            timePoint = 0
+        }
+
+        print(timePoint)
+        
+        player.currentTime = timePoint
+        
+    }
+    
+    
+    
     @IBAction func backFromPlaybackTabBar(_ sender: UIButton) {
+        print("back")
         
         displayPlaybackTabBar(show: false)
-        stopAudio()
+
+        player.pause()
+        playState = .paused
     }
     
     @IBAction func sliderMoved(_ sender: UISlider) {
@@ -166,8 +223,8 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
         guard player != nil else { return }
         
         do {
-            try AVAudioSession.sharedInstance().setActive(false)
             player.stop()
+            try AVAudioSession.sharedInstance().setActive(false)
         } catch {
             print("error stopping avaudioplayer")
         }
@@ -226,17 +283,34 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
         let widthConstraint = NSLayoutConstraint(item: playbackTabBar!, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1, constant: 0)
         
         if show {
+            
         self.view.addSubview(playbackTabBar)
         self.view.bringSubviewToFront(playbackTabBar)
-            //print(playbackTabBar.isDescendant(of: self.view))
+        playbackTabBar.alpha = 0
+        playbackTabBar.animate([.fadeIn, .duration(0.2)], completion: nil)
+
         NSLayoutConstraint.activate([bottomConstraint, leadingConstraint, trailingConstraint, widthConstraint])
         } else {
-            self.playbackTabBar.removeFromSuperview()
+            self.playbackTabBar.animate([.fadeOut, .duration(0.2)], completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+              self.playbackTabBar.removeFromSuperview()
+            }
+           
         }
     }
     
     @objc func dismissKeyboard(_ sender: Any) {
         logTitle.resignFirstResponder()
+    }
+    
+    func activityIndicator(size: Int, addTo view: UIView) -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: size, height: size))
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.center = view.center
+        activityIndicator.color = .red
+        view.addSubview(activityIndicator)
+        
+        return activityIndicator
     }
     
     //MARK: - Internal Methods
@@ -249,19 +323,35 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
     func recognizeFile(url: URL?) {
        guard let myRecognizer = SFSpeechRecognizer() else { print("speech recognition is not available at this locale"); return }
        guard url != nil else { print("url is nil"); return }
-       print("performing recognition")
+       print("performing recognition...\n")
+        
+        let loading = activityIndicator(size: 32, addTo: self.view)
+        loading.startAnimating()
         
        if !myRecognizer.isAvailable { print("speech recognition is not available at this locale"); return }
 
        let request = SFSpeechURLRecognitionRequest(url: url!)
        myRecognizer.recognitionTask(with: request) { (result, error) in
         
-          guard let result = result else { print("recognition failed"); return }
+        guard let result = result else { print("recognition failed"); loading.stopAnimating(); loading.removeFromSuperview(); return }
 
           
           if result.isFinal {
              // Jacob De La Bergoolah says: set result label to final result here
+            loading.stopAnimating()
+            loading.removeFromSuperview()
+            
             self.transcriptLabel.text = result.bestTranscription.formattedString
+            
+            do {
+                try self.realm.write {
+                    self.log?.transcript = result.bestTranscription.formattedString
+                }
+            } catch {
+                print("error writing transcription to realm \(error)")
+            }
+            
+            self.remove(file: url)
           }
        }
     }
@@ -270,7 +360,7 @@ class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
         guard log != nil else { print("found nil when preparing log recording recognition task"); return nil }
         
         let recordingURL = getDocumentsDirectory().appendingPathComponent("RecognitionQueue.m4a")
-        print("preparing URL...")
+        print("preparing URL...\n")
         do {
             try log?.recording.write(to: recordingURL)
         } catch {
@@ -305,9 +395,6 @@ extension SavedLogViewController: UITextFieldDelegate {
             //if title is in fact blank - change the textfield text to the previous title and do not commit any modification to the realm
             textField.text = textField.placeholder
             textField.placeholder = nil
-//            if let safeFileName = fileNameMemory {
-//              textField.text = safeFileName
-//            }
         }
         
         
@@ -320,10 +407,3 @@ extension SavedLogViewController: UITextFieldDelegate {
         logTitle.textColor = UIColor(named: "dark-navy")
     }
 }
-
-
-//To Do:
-// 1. toggle play/pause button image ------------------------------------ DONE
-// 2. when playing after pause - play from stopping point --------------- DONE
-// 3. if name began editing but not changed - return to previous name --- DONE
-// 4. does speech recognition work?

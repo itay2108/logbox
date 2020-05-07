@@ -17,8 +17,5 @@ class Log: Object {
     @objc dynamic var recording = Data()
     @objc dynamic var isDefaultName = true
     
-//    override class func primaryKey() -> String? {
-//        return "name"
-//    }
     
 }

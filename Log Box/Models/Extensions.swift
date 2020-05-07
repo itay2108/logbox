@@ -124,6 +124,17 @@ extension UIResponder {
         return paths[0]
     }
     
+    func remove(file atURL: URL?) {
+        guard atURL != nil else { return }
+        
+        do {
+            try FileManager.default.removeItem(at: atURL!)
+        } catch {
+           print("error removing recording from file directory: \(error)")
+        }
+
+    }
+    
 }
 
 enum RecState {

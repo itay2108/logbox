@@ -5,14 +5,22 @@
 //  Created by itay gervash on 06/04/2020.
 //  Copyright © 2020 itay gervash. All rights reserved.
 //
+//
+//TO DO:
+//
+// 1. swipe actions on tableview ------ DONE
+// 2. context menu on tableview ------- WORK
+// 3. language selection -------------- 
+// 4. profile button ------------------
 
 import UIKit
 import Speech
 import AVFoundation
 import RealmSwift
+import Hero
 
 
-class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
+class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var recordingTab: UIView!
     @IBOutlet weak var recordingTabConstraint: NSLayoutConstraint!
@@ -23,6 +31,7 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
     @IBOutlet weak var allLogsTableView: UITableView!
     @IBOutlet var recordingTabViews: [UIView]!
     @IBOutlet weak var recordingIndicator: UIImageView!
+    @IBOutlet weak var bottomBuffer: UIView!
     
     private let realm = try! Realm()
     private let def = UserDefaults.standard
@@ -65,6 +74,8 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
         dateFormatter.dateFormat = "d MMM YYYY HH:mm:ss"
         logs = getLogsFromRealm()
         tableView(sort: .chronologicDescending)
+        
+        setTableViewSwipeGRs()
         
     }
     
@@ -136,7 +147,6 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
         
         
     }
-    
     
     
     //MARK: - Audio Methods
@@ -213,12 +223,6 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
             print("error interrupted")
         }
     }
-    
-    
-//    func getDocumentsDirectory() -> URL {
-//        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-//        return paths[0]
-//    }
     
     
     //MARK: - Permissions
@@ -355,15 +359,15 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
                 for view in views {
                     if hidden {
                         view.alpha = 1.0
-                        UIView.animate(withDuration: 0.3) {
+                        UIView.animate(withDuration: 0.2) {
                             view.alpha = 0.0
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                             view.isHidden = hidden
                         }
                     } else {
                         view.alpha = 0.0
-                        UIView.animate(withDuration: 0.3) {
+                        UIView.animate(withDuration: 0.2) {
                             view.alpha = 1.0
                         }
                         view.isHidden = hidden
@@ -389,7 +393,7 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
             self.view.layoutIfNeeded()
         })
     }
-    
+        
     func renderDefaultUI() {
         recordingTab.clipsToBounds = false
         recordingTab.layer.cornerRadius = 10
@@ -454,6 +458,49 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
         
     }
     
+    @objc func handleSwipeUp(gesture: UISwipeGestureRecognizer) {
+
+        guard allLogsTableView.numberOfRows(inSection: 0) > 6 else { return }
+        
+        expand(for: recordingTabConstraint, to: 0, duration: 0.2)
+        areHidden(views: [self.recordingButton], hidden: true, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.areHidden(views: [self.bottomBuffer], hidden: true, animated: false)
+        }
+        
+        
+    }
+    
+    @objc func handleSwipeDown(gesture: UISwipeGestureRecognizer) {
+
+        guard allLogsTableView.numberOfRows(inSection: 0) > 6 else { return }
+        
+        expand(for: recordingTabConstraint, to: 97, duration: 0.2)
+        if recordingButton.isHidden {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.areHidden(views: [self.recordingButton, self.bottomBuffer], hidden: false, animated: true)
+            }
+        }
+    }
+
+    func setTableViewSwipeGRs() {
+        
+         let swipeUpRegongnizer = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeUp(gesture:)))
+         swipeUpRegongnizer.direction = .up
+         swipeUpRegongnizer.delegate = self
+        
+        let swipeDownRegongnizer = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeDown(gesture:)))
+        swipeDownRegongnizer.direction = .down
+        swipeDownRegongnizer.delegate = self
+        
+        allLogsTableView.addGestureRecognizer(swipeUpRegongnizer)
+        allLogsTableView.addGestureRecognizer(swipeDownRegongnizer)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -486,7 +533,21 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         performSegue(withIdentifier: "homeToSaved", sender: self)
     }
     
-    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: { (action, view, success:(Bool) -> Void) in
+            guard let safeLog = self.logs?[indexPath.row] else { print("log was nil when trying to delete"); return }
+                do {
+                    try self.realm.write {
+                        self.realm.delete(safeLog)
+                    }
+                } catch {
+                    print("error deleting item from realm")
+            }
+            tableView.reloadData()
+        })
+        deleteAction.backgroundColor = UIColor(named: "brand-red")
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
 }
 
 
