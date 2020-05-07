@@ -21,10 +21,7 @@
 		66A0265E243B4AB0009CDC23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A0265C243B4AB0009CDC23 /* LaunchScreen.storyboard */; };
 		66A02669243B54BA009CDC23 /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A02668243B54BA009CDC23 /* RecordingViewController.swift */; };
 		66A0266B243B9255009CDC23 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A0266A243B9255009CDC23 /* MainViewController.swift */; };
-		66B54F6A244B69B900493986 /* AudioVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B54F69244B69B900493986 /* AudioVisualizationView.swift */; };
 		66B54F6C244B69C000493986 /* AudioVisualizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66B54F6B244B69C000493986 /* AudioVisualizationView.xib */; };
-		66B54F6E244B69C500493986 /* BaseNibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B54F6D244B69C500493986 /* BaseNibView.swift */; };
-		66B54F70244B69C900493986 /* Chronometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B54F6F244B69C900493986 /* Chronometer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,10 +42,7 @@
 		66A0265F243B4AB0009CDC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66A02668243B54BA009CDC23 /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		66A0266A243B9255009CDC23 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		66B54F69244B69B900493986 /* AudioVisualizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioVisualizationView.swift; sourceTree = "<group>"; };
 		66B54F6B244B69C000493986 /* AudioVisualizationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioVisualizationView.xib; sourceTree = "<group>"; };
-		66B54F6D244B69C500493986 /* BaseNibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNibView.swift; sourceTree = "<group>"; };
-		66B54F6F244B69C900493986 /* Chronometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chronometer.swift; sourceTree = "<group>"; };
 		C3F7717A542AE918FD4C1F35 /* Pods_Log_Box.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Log_Box.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -133,9 +127,6 @@
 				66212E2C243DEF6A0014AE97 /* Vibration.swift */,
 				665D3D99243CEB8900579ACC /* Log.swift */,
 				66361D302448E99E00BCF9D6 /* Extensions.swift */,
-				66B54F69244B69B900493986 /* AudioVisualizationView.swift */,
-				66B54F6D244B69C500493986 /* BaseNibView.swift */,
-				66B54F6F244B69C900493986 /* Chronometer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -266,13 +257,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				66212E2D243DEF6A0014AE97 /* Vibration.swift in Sources */,
-				66B54F6E244B69C500493986 /* BaseNibView.swift in Sources */,
-				66B54F6A244B69B900493986 /* AudioVisualizationView.swift in Sources */,
 				66361D312448E99E00BCF9D6 /* Extensions.swift in Sources */,
 				66A02652243B4AAD009CDC23 /* AppDelegate.swift in Sources */,
 				66361D2D2448DCBA00BCF9D6 /* LogCell.swift in Sources */,
 				663FC151243CD1F900FAE75D /* SavedLogViewController.swift in Sources */,
-				66B54F70244B69C900493986 /* Chronometer.swift in Sources */,
 				665D3D9A243CEB8900579ACC /* Log.swift in Sources */,
 				66A02654243B4AAD009CDC23 /* SceneDelegate.swift in Sources */,
 				66A02669243B54BA009CDC23 /* RecordingViewController.swift in Sources */,
@@ -424,6 +412,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = DMNW5WHDHR;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				INFOPLIST_FILE = "Log Box/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -445,6 +434,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = DMNW5WHDHR;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				INFOPLIST_FILE = "Log Box/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

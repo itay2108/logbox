@@ -34,6 +34,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DAH-GO-3gT">
                                 <rect key="frame" x="16" y="106.33333333333331" width="382" height="651.66666666666674"/>
                                 <color key="backgroundColor" name="Off-white"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="651.66999999999996" identifier="tableViewHeightConstraint" id="fb5-Ub-AuL"/>
+                                </constraints>
                                 <color key="separatorColor" name="Silver"/>
                                 <color key="sectionIndexBackgroundColor" name="dark-navy"/>
                                 <prototypes>
@@ -255,7 +258,6 @@
                             <constraint firstItem="EIb-EI-MyV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="NWV-Mh-MFj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DAH-GO-3gT" secondAttribute="trailing" constant="16" id="QKB-w5-6xo"/>
                             <constraint firstItem="6qn-t1-Ymf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="b9o-QH-XzJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DAH-GO-3gT" secondAttribute="bottom" constant="16" id="bVA-yL-rvb"/>
                             <constraint firstItem="Btx-nt-cqo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="cPB-rJ-Txs"/>
                             <constraint firstItem="78e-lA-dzd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dgp-dU-2gr"/>
                             <constraint firstItem="6qn-t1-Ymf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="gsj-B0-ZhV"/>
@@ -274,6 +276,7 @@
                         <outlet property="recordingTab" destination="EIb-EI-MyV" id="WG9-vq-ybK"/>
                         <outlet property="recordingTabConstraint" destination="tVi-nv-9BZ" id="ZvE-cA-rgX"/>
                         <outlet property="recordingTimeLabel" destination="oCU-DG-CPH" id="oyt-4t-Qqd"/>
+                        <outlet property="tableViewHeightConstraint" destination="fb5-Ub-AuL" id="P1w-9D-GBK"/>
                         <outlet property="trashButton" destination="we4-5U-Pwm" id="qY2-Ld-dxq"/>
                         <outletCollection property="recordingTabViews" destination="we4-5U-Pwm" collectionClass="NSMutableArray" id="kxQ-Rf-Y70"/>
                         <outletCollection property="recordingTabViews" destination="NhC-Ve-4Z5" collectionClass="NSMutableArray" id="zaR-SA-gSW"/>

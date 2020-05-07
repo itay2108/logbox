@@ -24,6 +24,7 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
     
     @IBOutlet weak var recordingTab: UIView!
     @IBOutlet weak var recordingTabConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var recordingTimeLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var trashButton: UIButton!
@@ -76,12 +77,13 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
         tableView(sort: .chronologicDescending)
         
         setTableViewSwipeGRs()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         logs = getLogsFromRealm()
         allLogsTableView.reloadData()
+        
+        tableViewHeightConstraint.constant = getTableViewHeight()
     }
     
     
@@ -297,6 +299,7 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
             self.recordingNameToPass = name
         }
     }
+
     
     //MARK: - UI Manipulation
     
@@ -406,6 +409,17 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
         
     }
     
+    func getTableViewHeight() -> CGFloat {
+        let maxHeight = self.view.frame.height * 0.8
+        let calculatedHeight = CGFloat(allLogsTableView.numberOfRows(inSection: 0)) * allLogsTableView.rowHeight
+        
+        if calculatedHeight > maxHeight {
+            return maxHeight
+        } else {
+            return calculatedHeight
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "homeToSaved" {
             let destination = segue.destination as! SavedLogViewController
@@ -507,7 +521,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = logs?.count {
-            print("count is \(count)")
             return count
         } else {
             return 0
@@ -544,6 +557,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                     print("error deleting item from realm")
             }
             tableView.reloadData()
+            self.tableViewHeightConstraint.constant = self.getTableViewHeight()
         })
         deleteAction.backgroundColor = UIColor(named: "brand-red")
         return UISwipeActionsConfiguration(actions: [deleteAction])
