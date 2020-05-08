@@ -14,9 +14,7 @@ target 'Log Box' do
 	pod 'FirebaseFirestoreSwift'
 	pod 'Firebase/Auth'
   
-  pod 'SoundWave'
   pod 'IQKeyboardManager'
-  pod 'TextFieldEffects'
   
   pod 'Motion'
   pod 'Hero'

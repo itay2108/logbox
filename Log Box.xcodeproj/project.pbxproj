@@ -23,7 +23,6 @@
 		66A02669243B54BA009CDC23 /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A02668243B54BA009CDC23 /* RecordingViewController.swift */; };
 		66A0266B243B9255009CDC23 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A0266A243B9255009CDC23 /* MainViewController.swift */; };
 		66B54F6C244B69C000493986 /* AudioVisualizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66B54F6B244B69C000493986 /* AudioVisualizationView.xib */; };
-		66CDA5CE24649D5000CE1AC0 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CDA5CD24649D5000CE1AC0 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +45,6 @@
 		66A02668243B54BA009CDC23 /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		66A0266A243B9255009CDC23 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		66B54F6B244B69C000493986 /* AudioVisualizationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioVisualizationView.xib; sourceTree = "<group>"; };
-		66CDA5CD24649D5000CE1AC0 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C3F7717A542AE918FD4C1F35 /* Pods_Log_Box.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Log_Box.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -131,7 +129,6 @@
 				66212E2C243DEF6A0014AE97 /* Vibration.swift */,
 				665D3D99243CEB8900579ACC /* Log.swift */,
 				66361D302448E99E00BCF9D6 /* Extensions.swift */,
-				66CDA5CD24649D5000CE1AC0 /* CustomTextField.swift */,
 				66114A932464EDAC000BD4A0 /* CRTextField.swift */,
 			);
 			path = Models;
@@ -267,7 +264,6 @@
 				66A02652243B4AAD009CDC23 /* AppDelegate.swift in Sources */,
 				66361D2D2448DCBA00BCF9D6 /* LogCell.swift in Sources */,
 				66114A942464EDAC000BD4A0 /* CRTextField.swift in Sources */,
-				66CDA5CE24649D5000CE1AC0 /* CustomTextField.swift in Sources */,
 				663FC151243CD1F900FAE75D /* SavedLogViewController.swift in Sources */,
 				665D3D9A243CEB8900579ACC /* Log.swift in Sources */,
 				66A02654243B4AAD009CDC23 /* SceneDelegate.swift in Sources */,
