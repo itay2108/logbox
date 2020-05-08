@@ -287,6 +287,7 @@ PODS:
   - RealmSwift (4.3.2):
     - Realm (= 4.3.2)
   - SoundWave (0.1.4)
+  - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -298,6 +299,7 @@ DEPENDENCIES:
   - Motion
   - RealmSwift
   - SoundWave
+  - TextFieldEffects
 
 SPEC REPOS:
   trunk:
@@ -329,6 +331,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SoundWave
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -359,7 +362,8 @@ SPEC CHECKSUMS:
   Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
   RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
   SoundWave: d98ffaa863570b29d991da32a09b7ce1b4aaf2d4
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 79f1076395841ba7cc56a19a9f15f5a8bf41fa82
+PODFILE CHECKSUM: 7ecfad1eb22baec7182c849b3c804cdefcf65130
 
 COCOAPODS: 1.8.4

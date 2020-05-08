@@ -16,6 +16,7 @@ target 'Log Box' do
   
   pod 'SoundWave'
   pod 'IQKeyboardManager'
+  pod 'TextFieldEffects'
   
   pod 'Motion'
   pod 'Hero'

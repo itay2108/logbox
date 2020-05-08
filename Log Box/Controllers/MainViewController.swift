@@ -45,7 +45,7 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
     private var recorder: AVAudioRecorder!
     private var player: AVAudioPlayer!
     private var currentRecordingURL: URL?
-    private var timer: Timer?
+    private weak var timer: Timer?
     
     
     public var recState = RecState.inactive {
@@ -302,17 +302,6 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
 
     
     //MARK: - UI Manipulation
-    
-    func createSoundVisualizer(samples: Int) {
-
-        let soundVisualizer = AudioVisualizationView(frame: CGRect(x: 0.0, y: 0.0, width: 350, height: 64))
-        soundVisualizer.meteringLevelBarWidth = 5
-        soundVisualizer.meteringLevelBarInterItem = 1
-        soundVisualizer.meteringLevelBarCornerRadius = 5
-        soundVisualizer.backgroundColor = UIColor(named: "silver")
-        soundVisualizer.audioVisualizationMode = .write
-
-    }
     
     
     func recordingBarUIUpdate(by state: RecState) {

@@ -601,14 +601,89 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="edw-ng-TzH"/>
+                        <segue destination="Pjc-Hv-WGW" kind="relationship" relationship="rootViewController" id="f1g-PA-vyE"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jd1-F2-dGR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="226" y="136"/>
+            <point key="canvasLocation" x="-588" y="138"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HAe-Mb-BGB">
+            <objects>
+                <viewController id="Pjc-Hv-WGW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QNq-Xx-KHx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9uE-QW-9AV" customClass="CRTextField" customModule="Log_Box" customModuleProvider="target">
+                                <rect key="frame" x="41.333333333333343" y="377" width="331.33333333333326" height="54"/>
+                                <color key="backgroundColor" name="Off-white"/>
+                                <color key="textColor" name="dark-navy"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="horizontalTextMargin">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOD-Qc-agr">
+                                <rect key="frame" x="184" y="689" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="rEW-rl-b6f"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey There!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcr-uS-3sN">
+                                <rect key="frame" x="20" y="6" width="174" height="41"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                <color key="textColor" name="dark-navy"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an account and start recording" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM0-Pz-SZe">
+                                <rect key="frame" x="20" y="59" width="231" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" name="silver"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cM0-Pz-SZe" firstAttribute="top" secondItem="gcr-uS-3sN" secondAttribute="bottom" constant="12" id="3nt-ey-P3o"/>
+                            <constraint firstItem="eUt-DM-3Jy" firstAttribute="bottom" secondItem="uOD-Qc-agr" secondAttribute="bottom" constant="55" id="51I-sY-ZXj"/>
+                            <constraint firstItem="9uE-QW-9AV" firstAttribute="centerX" secondItem="QNq-Xx-KHx" secondAttribute="centerX" id="BvK-zl-FeZ"/>
+                            <constraint firstItem="eUt-DM-3Jy" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gcr-uS-3sN" secondAttribute="trailing" symbolic="YES" id="FEM-KK-EIz"/>
+                            <constraint firstItem="uOD-Qc-agr" firstAttribute="centerX" secondItem="QNq-Xx-KHx" secondAttribute="centerX" id="H9z-kl-aVW"/>
+                            <constraint firstItem="9uE-QW-9AV" firstAttribute="height" secondItem="eUt-DM-3Jy" secondAttribute="height" multiplier="0.07" id="ICo-n3-9f9"/>
+                            <constraint firstItem="gcr-uS-3sN" firstAttribute="leading" secondItem="eUt-DM-3Jy" secondAttribute="leading" constant="20" id="O8e-gw-G6i"/>
+                            <constraint firstItem="9uE-QW-9AV" firstAttribute="width" secondItem="eUt-DM-3Jy" secondAttribute="width" multiplier="0.8" id="RQe-No-HAo"/>
+                            <constraint firstItem="cM0-Pz-SZe" firstAttribute="leading" secondItem="eUt-DM-3Jy" secondAttribute="leading" constant="20" id="T9A-8s-uGi"/>
+                            <constraint firstItem="gcr-uS-3sN" firstAttribute="top" secondItem="eUt-DM-3Jy" secondAttribute="top" constant="6" id="oLV-Bp-7dp"/>
+                            <constraint firstItem="9uE-QW-9AV" firstAttribute="centerY" secondItem="QNq-Xx-KHx" secondAttribute="centerY" id="rQA-Qb-4JA"/>
+                            <constraint firstItem="eUt-DM-3Jy" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cM0-Pz-SZe" secondAttribute="trailing" symbolic="YES" id="tXO-g9-7lh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eUt-DM-3Jy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UuD-Sb-vfr"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" id="abt-gb-TJY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LgW-Ow-rhg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="218.84057971014494" y="135.9375"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="abt-gb-TJY"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
