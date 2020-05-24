@@ -11,18 +11,25 @@
 		66114A942464EDAC000BD4A0 /* CRTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66114A932464EDAC000BD4A0 /* CRTextField.swift */; };
 		66212E2D243DEF6A0014AE97 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66212E2C243DEF6A0014AE97 /* Vibration.swift */; };
 		66361D2D2448DCBA00BCF9D6 /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66361D2C2448DCBA00BCF9D6 /* LogCell.swift */; };
-		66361D312448E99E00BCF9D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66361D302448E99E00BCF9D6 /* Extensions.swift */; };
+		66361D312448E99E00BCF9D6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66361D302448E99E00BCF9D6 /* Enums.swift */; };
 		663FC151243CD1F900FAE75D /* SavedLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663FC150243CD1F900FAE75D /* SavedLogViewController.swift */; };
 		665D3D9A243CEB8900579ACC /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D3D99243CEB8900579ACC /* Log.swift */; };
 		666F5E4F243CE749004E5A88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 666F5E4E243CE749004E5A88 /* GoogleService-Info.plist */; };
+		668B13EC2479599E00AB1226 /* UILogBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B13EB2479599E00AB1226 /* UILogBoxVC.swift */; };
+		668B13EF24795B5000AB1226 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B13ED24795B5000AB1226 /* SignUpViewController.swift */; };
+		668B13F024795B5000AB1226 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 668B13EE24795B5000AB1226 /* SignUpViewController.xib */; };
+		668B13F42479617300AB1226 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B13F22479617300AB1226 /* SignInViewController.swift */; };
+		668B13F52479617300AB1226 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 668B13F32479617300AB1226 /* SignInViewController.xib */; };
+		668B13F9247AD2B600AB1226 /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B13F8247AD2B600AB1226 /* UIView+RoundCorners.swift */; };
+		668B13FB247AD2F500AB1226 /* UIResponder+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B13FA247AD2F500AB1226 /* UIResponder+TimeFormat.swift */; };
+		668B13FD247AD3A700AB1226 /* UIResponder+URLFromBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B13FC247AD3A700AB1226 /* UIResponder+URLFromBundle.swift */; };
 		66A02652243B4AAD009CDC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A02651243B4AAD009CDC23 /* AppDelegate.swift */; };
 		66A02654243B4AAD009CDC23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A02653243B4AAD009CDC23 /* SceneDelegate.swift */; };
 		66A02659243B4AAD009CDC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A02657243B4AAD009CDC23 /* Main.storyboard */; };
 		66A0265B243B4AB0009CDC23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66A0265A243B4AB0009CDC23 /* Assets.xcassets */; };
 		66A0265E243B4AB0009CDC23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A0265C243B4AB0009CDC23 /* LaunchScreen.storyboard */; };
-		66A02669243B54BA009CDC23 /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A02668243B54BA009CDC23 /* RecordingViewController.swift */; };
 		66A0266B243B9255009CDC23 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A0266A243B9255009CDC23 /* MainViewController.swift */; };
-		66B54F6C244B69C000493986 /* AudioVisualizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66B54F6B244B69C000493986 /* AudioVisualizationView.xib */; };
+		66B4D434246885A4009424A1 /* CRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B4D433246885A4009424A1 /* CRButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,10 +38,18 @@
 		66114A932464EDAC000BD4A0 /* CRTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRTextField.swift; sourceTree = "<group>"; };
 		66212E2C243DEF6A0014AE97 /* Vibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
 		66361D2C2448DCBA00BCF9D6 /* LogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCell.swift; sourceTree = "<group>"; };
-		66361D302448E99E00BCF9D6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		66361D302448E99E00BCF9D6 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		663FC150243CD1F900FAE75D /* SavedLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLogViewController.swift; sourceTree = "<group>"; };
 		665D3D99243CEB8900579ACC /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		666F5E4E243CE749004E5A88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		668B13EB2479599E00AB1226 /* UILogBoxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILogBoxVC.swift; sourceTree = "<group>"; };
+		668B13ED24795B5000AB1226 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		668B13EE24795B5000AB1226 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		668B13F22479617300AB1226 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		668B13F32479617300AB1226 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		668B13F8247AD2B600AB1226 /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
+		668B13FA247AD2F500AB1226 /* UIResponder+TimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+TimeFormat.swift"; sourceTree = "<group>"; };
+		668B13FC247AD3A700AB1226 /* UIResponder+URLFromBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+URLFromBundle.swift"; sourceTree = "<group>"; };
 		66A0264E243B4AAD009CDC23 /* Log Box.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Log Box.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A02651243B4AAD009CDC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66A02653243B4AAD009CDC23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,9 +57,8 @@
 		66A0265A243B4AB0009CDC23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66A0265D243B4AB0009CDC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66A0265F243B4AB0009CDC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		66A02668243B54BA009CDC23 /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		66A0266A243B9255009CDC23 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		66B54F6B244B69C000493986 /* AudioVisualizationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioVisualizationView.xib; sourceTree = "<group>"; };
+		66B4D433246885A4009424A1 /* CRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRButton.swift; sourceTree = "<group>"; };
 		C3F7717A542AE918FD4C1F35 /* Pods_Log_Box.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Log_Box.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -67,6 +81,55 @@
 				27E04865C5D911B152022A9B /* Pods-Log Box.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		668B13E9247958BE00AB1226 /* mainVC */ = {
+			isa = PBXGroup;
+			children = (
+				66A0266A243B9255009CDC23 /* MainViewController.swift */,
+				66361D2C2448DCBA00BCF9D6 /* LogCell.swift */,
+			);
+			path = mainVC;
+			sourceTree = "<group>";
+		};
+		668B13EA2479590900AB1226 /* savedLogVC */ = {
+			isa = PBXGroup;
+			children = (
+				663FC150243CD1F900FAE75D /* SavedLogViewController.swift */,
+			);
+			path = savedLogVC;
+			sourceTree = "<group>";
+		};
+		668B13F124795B5600AB1226 /* signupVC */ = {
+			isa = PBXGroup;
+			children = (
+				668B13ED24795B5000AB1226 /* SignUpViewController.swift */,
+				668B13EE24795B5000AB1226 /* SignUpViewController.xib */,
+			);
+			path = signupVC;
+			sourceTree = "<group>";
+		};
+		668B13F62479617800AB1226 /* signinVC */ = {
+			isa = PBXGroup;
+			children = (
+				668B13F22479617300AB1226 /* SignInViewController.swift */,
+				668B13F32479617300AB1226 /* SignInViewController.xib */,
+			);
+			path = signinVC;
+			sourceTree = "<group>";
+		};
+		668B13F7247AD1F500AB1226 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				66114A932464EDAC000BD4A0 /* CRTextField.swift */,
+				66B4D433246885A4009424A1 /* CRButton.swift */,
+				66361D302448E99E00BCF9D6 /* Enums.swift */,
+				668B13F8247AD2B600AB1226 /* UIView+RoundCorners.swift */,
+				668B13FA247AD2F500AB1226 /* UIResponder+TimeFormat.swift */,
+				668B13FC247AD3A700AB1226 /* UIResponder+URLFromBundle.swift */,
+				66212E2C243DEF6A0014AE97 /* Vibration.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		66A02645243B4AAD009CDC23 = {
@@ -92,8 +155,9 @@
 			children = (
 				66A02651243B4AAD009CDC23 /* AppDelegate.swift */,
 				66A02653243B4AAD009CDC23 /* SceneDelegate.swift */,
+				66A02657243B4AAD009CDC23 /* Main.storyboard */,
+				668B13F7247AD1F500AB1226 /* Utilities */,
 				66A02667243B547E009CDC23 /* Models */,
-				66A02665243B5469009CDC23 /* Views */,
 				66A02666243B5472009CDC23 /* Controllers */,
 				66A0265A243B4AB0009CDC23 /* Assets.xcassets */,
 				66A0265C243B4AB0009CDC23 /* LaunchScreen.storyboard */,
@@ -103,22 +167,14 @@
 			path = "Log Box";
 			sourceTree = "<group>";
 		};
-		66A02665243B5469009CDC23 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				66A02657243B4AAD009CDC23 /* Main.storyboard */,
-				66B54F6B244B69C000493986 /* AudioVisualizationView.xib */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		66A02666243B5472009CDC23 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				66A02668243B54BA009CDC23 /* RecordingViewController.swift */,
-				66A0266A243B9255009CDC23 /* MainViewController.swift */,
-				663FC150243CD1F900FAE75D /* SavedLogViewController.swift */,
-				66361D2C2448DCBA00BCF9D6 /* LogCell.swift */,
+				668B13EB2479599E00AB1226 /* UILogBoxVC.swift */,
+				668B13F62479617800AB1226 /* signinVC */,
+				668B13F124795B5600AB1226 /* signupVC */,
+				668B13E9247958BE00AB1226 /* mainVC */,
+				668B13EA2479590900AB1226 /* savedLogVC */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -126,10 +182,7 @@
 		66A02667243B547E009CDC23 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				66212E2C243DEF6A0014AE97 /* Vibration.swift */,
 				665D3D99243CEB8900579ACC /* Log.swift */,
-				66361D302448E99E00BCF9D6 /* Extensions.swift */,
-				66114A932464EDAC000BD4A0 /* CRTextField.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -204,8 +257,9 @@
 			files = (
 				66A0265E243B4AB0009CDC23 /* LaunchScreen.storyboard in Resources */,
 				666F5E4F243CE749004E5A88 /* GoogleService-Info.plist in Resources */,
-				66B54F6C244B69C000493986 /* AudioVisualizationView.xib in Resources */,
 				66A0265B243B4AB0009CDC23 /* Assets.xcassets in Resources */,
+				668B13F024795B5000AB1226 /* SignUpViewController.xib in Resources */,
+				668B13F52479617300AB1226 /* SignInViewController.xib in Resources */,
 				66A02659243B4AAD009CDC23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,15 +313,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				668B13F9247AD2B600AB1226 /* UIView+RoundCorners.swift in Sources */,
 				66212E2D243DEF6A0014AE97 /* Vibration.swift in Sources */,
-				66361D312448E99E00BCF9D6 /* Extensions.swift in Sources */,
+				66361D312448E99E00BCF9D6 /* Enums.swift in Sources */,
 				66A02652243B4AAD009CDC23 /* AppDelegate.swift in Sources */,
+				668B13FB247AD2F500AB1226 /* UIResponder+TimeFormat.swift in Sources */,
 				66361D2D2448DCBA00BCF9D6 /* LogCell.swift in Sources */,
+				668B13FD247AD3A700AB1226 /* UIResponder+URLFromBundle.swift in Sources */,
 				66114A942464EDAC000BD4A0 /* CRTextField.swift in Sources */,
+				668B13F42479617300AB1226 /* SignInViewController.swift in Sources */,
 				663FC151243CD1F900FAE75D /* SavedLogViewController.swift in Sources */,
+				66B4D434246885A4009424A1 /* CRButton.swift in Sources */,
+				668B13EC2479599E00AB1226 /* UILogBoxVC.swift in Sources */,
 				665D3D9A243CEB8900579ACC /* Log.swift in Sources */,
 				66A02654243B4AAD009CDC23 /* SceneDelegate.swift in Sources */,
-				66A02669243B54BA009CDC23 /* RecordingViewController.swift in Sources */,
+				668B13EF24795B5000AB1226 /* SignUpViewController.swift in Sources */,
 				66A0266B243B9255009CDC23 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

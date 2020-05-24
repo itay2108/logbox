@@ -20,7 +20,7 @@ import RealmSwift
 import Hero
 
 
-class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate, UIGestureRecognizerDelegate {
+class MainViewController: UILogBoxVC, SFSpeechRecognizerDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var recordingTab: UIView!
     @IBOutlet weak var recordingTabConstraint: NSLayoutConstraint!
@@ -33,13 +33,16 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
     @IBOutlet var recordingTabViews: [UIView]!
     @IBOutlet weak var recordingIndicator: UIImageView!
     @IBOutlet weak var bottomBuffer: UIView!
+    @IBOutlet weak var emptyImgView: UIImageView!
+    @IBOutlet weak var NoRecordingsLabel: UILabel!
+    
     
     private let realm = try! Realm()
     private let def = UserDefaults.standard
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
     private let dateFormatter = DateFormatter()
     public var logs: Results<Log>?
-
+    
     
     private var audioSession: AVAudioSession!
     private var recorder: AVAudioRecorder!
@@ -67,7 +70,6 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
         setupHideKeyboardOnTap()
         renderDefaultUI()
         clearNavBarSeparator()
-        requestPermissions()
         audioSession = createAudioSessionObject()
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
@@ -79,13 +81,26 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
         setTableViewSwipeGRs()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         logs = getLogsFromRealm()
         allLogsTableView.reloadData()
         
         tableViewHeightConstraint.constant = getTableViewHeight()
+        
+        let vc = SignUpViewController()
+        if def.bool(forKey: "isLoggedIn") == false {
+            print(true)
+            self.navigationController?.pushViewController(vc, animated: false)
+        } else {
+            self.navigationController?.navigationBar.isHidden = false
+        }
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        requestPermissions()
+    }
     
     
     @IBAction func recButtonPressed(_ sender: Any) {
@@ -213,7 +228,7 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
             do {
                 try FileManager.default.removeItem(at: self.currentRecordingURL!)
             } catch {
-               print("error removing recording from file directory: \(error)")
+                print("error removing recording from file directory: \(error)")
             }
         }
         
@@ -299,7 +314,7 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
             self.recordingNameToPass = name
         }
     }
-
+    
     
     //MARK: - UI Manipulation
     
@@ -385,7 +400,7 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
             self.view.layoutIfNeeded()
         })
     }
-        
+    
     func renderDefaultUI() {
         recordingTab.clipsToBounds = false
         recordingTab.layer.cornerRadius = 10
@@ -462,7 +477,7 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
     }
     
     @objc func handleSwipeUp(gesture: UISwipeGestureRecognizer) {
-
+        
         guard allLogsTableView.numberOfRows(inSection: 0) > 6 else { return }
         
         expand(for: recordingTabConstraint, to: 0, duration: 0.2)
@@ -475,7 +490,7 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
     }
     
     @objc func handleSwipeDown(gesture: UISwipeGestureRecognizer) {
-
+        
         guard allLogsTableView.numberOfRows(inSection: 0) > 6 else { return }
         
         expand(for: recordingTabConstraint, to: 97, duration: 0.2)
@@ -485,12 +500,12 @@ class MainViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioR
             }
         }
     }
-
+    
     func setTableViewSwipeGRs() {
         
-         let swipeUpRegongnizer = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeUp(gesture:)))
-         swipeUpRegongnizer.direction = .up
-         swipeUpRegongnizer.delegate = self
+        let swipeUpRegongnizer = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeUp(gesture:)))
+        swipeUpRegongnizer.direction = .up
+        swipeUpRegongnizer.delegate = self
         
         let swipeDownRegongnizer = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeDown(gesture:)))
         swipeDownRegongnizer.direction = .down
@@ -510,8 +525,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = logs?.count {
+            if logs?.count != 0 {
+                emptyImgView.isHidden = true
+                NoRecordingsLabel.isHidden = true
+            }
             return count
         } else {
+            emptyImgView.isHidden = true
+            NoRecordingsLabel.isHidden = true
             return 0
         }
     }
@@ -538,12 +559,19 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: { (action, view, success:(Bool) -> Void) in
             guard let safeLog = self.logs?[indexPath.row] else { print("log was nil when trying to delete"); return }
-                do {
-                    try self.realm.write {
-                        self.realm.delete(safeLog)
+            do {
+                try self.realm.write {
+                    self.realm.delete(safeLog)
+                    if self.logs?.count == 0 {
+                        self.emptyImgView.isHidden = false
+                        self.NoRecordingsLabel.isHidden = false
+                    } else {
+                        self.emptyImgView.isHidden = true
+                        self.NoRecordingsLabel.isHidden = true
                     }
-                } catch {
-                    print("error deleting item from realm")
+                }
+            } catch {
+                print("error deleting item from realm")
             }
             tableView.reloadData()
             self.tableViewHeightConstraint.constant = self.getTableViewHeight()

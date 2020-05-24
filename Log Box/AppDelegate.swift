@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UIApplication.isFirstLaunch() {
             def.set(false, forKey: "allowSpeech")
             def.set(0, forKey: "recIndex")
+            def.set(false, forKey: "isLoggedIn")
+            
         }
         
         return true

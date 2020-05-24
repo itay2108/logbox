@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="Log_Box" customModuleProvider="target">
+            <connections>
+                <outlet property="emailTextField" destination="9US-MG-ZND" id="0A2-0q-SQ3"/>
+                <outlet property="passwordTextField" destination="UGs-jJ-pqb" id="Zks-Co-Gfo"/>
+                <outlet property="textFieldStackView" destination="4Q6-CZ-TJS" id="f5D-mA-vUf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signup-red" translatesAutoresizingMaskIntoConstraints="NO" id="PLN-je-F8i">
+                    <rect key="frame" x="0.0" y="493" width="183.5" height="403"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="PLN-je-F8i" secondAttribute="height" multiplier="176:387" id="fvb-hU-ByU"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signup-blue" translatesAutoresizingMaskIntoConstraints="NO" id="6Fy-VS-LFz">
+                    <rect key="frame" x="312.5" y="0.0" width="101.5" height="327"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="6Fy-VS-LFz" secondAttribute="height" multiplier="113:365" id="M3l-2H-MMS"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an account and start recording" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rf-tu-gHU">
+                    <rect key="frame" x="24" y="151" width="230.5" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" name="silver"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgc-4s-R27" customClass="CRButton" customModule="Log_Box" customModuleProvider="target">
+                    <rect key="frame" x="24" y="742" width="366" height="56"/>
+                    <color key="backgroundColor" name="dark-navy"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="dps-lo-KRX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <state key="normal" title=" Continue with Apple">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="40"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="continueWithAppleBtnPressed:" destination="-1" eventType="touchUpInside" id="CHP-Po-cQU"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey There!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOf-dX-uvh">
+                    <rect key="frame" x="24" y="98" width="173.5" height="41"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                    <color key="textColor" name="dark-navy"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="4Q6-CZ-TJS">
+                    <rect key="frame" x="24" y="338" width="366" height="124"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9US-MG-ZND" customClass="CRTextField" customModule="Log_Box" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="366" height="56"/>
+                            <color key="backgroundColor" name="Off-white"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="X5A-Ds-VAh"/>
+                            </constraints>
+                            <color key="textColor" name="dark-navy"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                            <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Email address"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="40"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="activeBorderColor">
+                                    <color key="value" name="dark-navy"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="activeBorderWidth">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="labelColor">
+                                    <color key="value" name="silver"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UGs-jJ-pqb" customClass="CRTextField" customModule="Log_Box" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="68" width="366" height="56"/>
+                            <color key="backgroundColor" name="Off-white"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="fM1-6I-jOp"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="continue" textContentType="password"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="40"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="activeBorderColor">
+                                    <color key="value" name="dark-navy"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="activeBorderWidth">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="labelColor">
+                                    <color key="value" name="silver"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="9US-MG-ZND" firstAttribute="width" secondItem="4Q6-CZ-TJS" secondAttribute="width" id="edB-NS-YFk"/>
+                        <constraint firstItem="UGs-jJ-pqb" firstAttribute="width" secondItem="4Q6-CZ-TJS" secondAttribute="width" id="nOW-UP-Ztr"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zG3-nJ-qTA" customClass="CRButton" customModule="Log_Box" customModuleProvider="target">
+                    <rect key="frame" x="243.5" y="470" width="146.5" height="56"/>
+                    <color key="backgroundColor" name="brand-red"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <color key="tintColor" name="Off-white"/>
+                    <state key="normal" title="Create Account"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="40"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="createAccountButtonPressed:" destination="-1" eventType="touchUpInside" id="R0t-tf-9EQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O85-e5-VUO">
+                    <rect key="frame" x="119" y="806" width="176" height="30"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <color key="tintColor" name="dark-navy"/>
+                    <state key="normal" title="Have an account? Sign in"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="Vgc-4s-R27" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="3Ud-3Y-hA3"/>
+                <constraint firstItem="6Fy-VS-LFz" firstAttribute="width" secondItem="6Fy-VS-LFz" secondAttribute="height" multiplier="113:365" id="7wJ-yZ-g9K"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vgc-4s-R27" secondAttribute="bottom" constant="64" id="8Fw-PE-B7x"/>
+                <constraint firstItem="6Fy-VS-LFz" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.4" id="8Xj-yR-iU8"/>
+                <constraint firstItem="6Fy-VS-LFz" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="919-zF-wSw"/>
+                <constraint firstItem="4rf-tu-gHU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="9qS-Qx-x6P"/>
+                <constraint firstItem="Vgc-4s-R27" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DkS-Sz-PfR"/>
+                <constraint firstItem="O85-e5-VUO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="EFO-kh-gRv"/>
+                <constraint firstItem="PLN-je-F8i" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.45" id="Fel-aC-dhb"/>
+                <constraint firstItem="PLN-je-F8i" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="KIw-h9-sMw"/>
+                <constraint firstItem="zG3-nJ-qTA" firstAttribute="top" secondItem="4Q6-CZ-TJS" secondAttribute="bottom" constant="8" id="KWt-L1-oji"/>
+                <constraint firstItem="4Q6-CZ-TJS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LBh-03-HRc"/>
+                <constraint firstItem="zG3-nJ-qTA" firstAttribute="height" secondItem="UGs-jJ-pqb" secondAttribute="height" id="LoW-8t-8KZ"/>
+                <constraint firstItem="4Q6-CZ-TJS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="QD6-yJ-Ux9"/>
+                <constraint firstItem="NOf-dX-uvh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="XYh-69-pZM"/>
+                <constraint firstAttribute="bottom" secondItem="PLN-je-F8i" secondAttribute="bottom" id="aYh-wP-vyR"/>
+                <constraint firstItem="4Q6-CZ-TJS" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-48" id="een-DG-8lj"/>
+                <constraint firstItem="O85-e5-VUO" firstAttribute="top" secondItem="Vgc-4s-R27" secondAttribute="bottom" constant="8" id="fHV-Mr-VIZ"/>
+                <constraint firstItem="PLN-je-F8i" firstAttribute="width" secondItem="PLN-je-F8i" secondAttribute="height" multiplier="176:387" id="fZh-cf-g9U"/>
+                <constraint firstItem="6Fy-VS-LFz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iNH-QM-m2F"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zG3-nJ-qTA" secondAttribute="trailing" constant="24" id="lxe-bO-0Ul"/>
+                <constraint firstItem="NOf-dX-uvh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="54" id="ok7-Mr-KqY"/>
+                <constraint firstItem="4rf-tu-gHU" firstAttribute="top" secondItem="NOf-dX-uvh" secondAttribute="bottom" constant="12" id="u8H-GY-HfL"/>
+                <constraint firstItem="zG3-nJ-qTA" firstAttribute="width" secondItem="4Q6-CZ-TJS" secondAttribute="width" multiplier="0.4" id="uMU-Yr-crN"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="signup-blue" width="69" height="176"/>
+        <image name="signup-red" width="87" height="193.5"/>
+        <namedColor name="Off-white">
+            <color red="0.98400002717971802" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="brand-red">
+            <color red="0.92000001668930054" green="0.21299999952316284" blue="0.33199998736381531" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="dark-navy">
+            <color red="0.14900000393390656" green="0.15299999713897705" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="silver">
+            <color red="0.65100002288818359" green="0.70999997854232788" blue="0.77999997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

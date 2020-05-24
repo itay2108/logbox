@@ -23,7 +23,7 @@ import Speech
 import Motion
 import Hero
 
-class SavedLogViewController: UIViewController, AVAudioPlayerDelegate {
+class SavedLogViewController: UILogBoxVC, AVAudioPlayerDelegate {
 
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var currentRecTime: UILabel!
